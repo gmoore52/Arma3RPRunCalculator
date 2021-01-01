@@ -17,7 +17,19 @@ void moonshine()
   cin >> cargo;
   moontruck = cargo / 3;
   cout << moontruck;
-
+  cout << "Enter Y to restart the program, press any other button to close the program: ";
+  cin >> uselessvar;
+  switch(uselessvar)
+  {
+    case 'Y':
+      main();
+      break;
+    case 'y':
+      main();
+      break;
+    default:
+      cout << "ok";
+  }
 }
 
 void comparison()
