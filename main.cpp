@@ -3,11 +3,22 @@
 #include <string>
 using namespace std;
 
-float run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay;
+float run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck;
 char uselessvar, mode2;
 string mode1;
 
 int main();
+
+void moonshine()
+{
+  cout << "Enter moonshines current price: ";
+  cin >> moonmoney;
+  cout << "Enter amount of space including character and vehicle: ";
+  cin >> cargo;
+  moontruck = cargo / 3;
+  cout << moontruck;
+
+}
 
 void comparison()
 {
@@ -71,7 +82,7 @@ int main()
 {
   mode1 = "1";
   mode2 = '1';
-  cout << "Comparison or Calculator? 1 for Comparison, 2 for Calculator: ";
+  cout << "Comparison, Calculator or Moonshine? 1 for Comparison, 2 for Calculator, 3 for moonshine: ";
   cin >> mode1;
   if(mode1.length() != 1)
   {
@@ -88,6 +99,9 @@ int main()
       break;
     case '2':
       calc();
+      break;
+    case '3':
+      moonshine();
       break;
     default:
       cout << "Please enter a valid answer" << endl;
