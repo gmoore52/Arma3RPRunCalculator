@@ -3,22 +3,15 @@
 #include <string>
 using namespace std;
 
-int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal;
+int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal, moonplacer;
 char uselessvar, mode2;
 string mode1, uselessvar1;
 
 int main();
 
-void moonshine()
+void restart()
 {
-  cout << "Enter moonshines current price: ";
-  cin >> moonmoney;
-  cout << "Enter amount of space including character and vehicle: ";
-  cin >> cargo;
-  moontruck = cargo / 3;
-  moonmoneyfinal = moonmoney * moontruck;
-  cout << "You will need " << moontruck << " of each required resource to make " << moontruck << " moonshine." << endl << "This run will make $" << moonmoneyfinal << endl;
-  cout << "Enter Y to restart the program, enter any other button to close the program: ";
+  cout << "Enter Y to restart the program, enter any other key to close the program: ";
   cin >> uselessvar1;
   if(uselessvar1.length() != 1)
   {
@@ -39,6 +32,24 @@ void moonshine()
         cout << "ok";
     }
   }
+}
+
+void meth()
+{
+  cout << "Enter meths current price: ";
+}
+
+void moonshine()
+{
+  cout << "Enter moonshines current price: ";
+  cin >> moonmoney;
+  cout << "Enter amount of space including character and vehicle: ";
+  cin >> cargo;
+  moonplacer = cargo / 3;
+  moontruck = moonplacer / 2;
+  moonmoneyfinal = moonmoney * moontruck;
+  cout << "You will need " << moontruck << " of each required resource to make " << moontruck << " moonshine." << endl << "This run will make $" << moonmoneyfinal << endl;
+  restart();
 }
 
 void comparison()
@@ -58,27 +69,7 @@ void comparison()
   runtype1finalpay = runtype1final * run1pay;
   runtype2finalpay = runtype2final * run2pay;
   cout << "Run 1 will make: $" << runtype1finalpay << endl << "Run 2 will make: $" << runtype2finalpay << endl;
-  cout << "Enter Y to restart the program, enter any other button to close the program: ";
-  cin >> uselessvar1;
-  if(uselessvar1.length() != 1)
-  {
-    cout << "ok";
-  }
-  else
-  {
-    uselessvar = uselessvar1[0];
-    switch(uselessvar)
-    {
-      case 'Y':
-       main();
-       break;
-      case 'y':
-       main();
-        break;
-      default:
-        cout << "ok";
-    }
-  }
+  restart();
 }
 
 void calc()
@@ -92,27 +83,7 @@ void calc()
   runtype1final = cargo / runtype1weight;
   runtype1finalpay = runtype1final * run1pay;
   cout << "This run will make: $" << runtype1finalpay << endl;
-  cout << "Enter Y to restart the program, enter any other button to close the program: ";
-  cin >> uselessvar1;
-  if(uselessvar1.length() != 1)
-  {
-    cout << "ok";
-  }
-  else
-  {
-    uselessvar = uselessvar1[0];
-    switch(uselessvar)
-    {
-      case 'Y':
-       main();
-       break;
-      case 'y':
-       main();
-        break;
-      default:
-        cout << "ok";
-    }
-  }
+  restart();
 }
 
 int main()
