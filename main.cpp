@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal, moonplacer;
+int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal, moonplacer, methmoney, methtruck, methmoneyfinal, methplacer;
 char uselessvar, mode2;
 string mode1, uselessvar1;
 
@@ -37,6 +37,12 @@ void restart()
 void meth()
 {
   cout << "Enter meths current price: ";
+  cin >> methmoney;
+  cout << "Enter amount of space including character and vehicle: ";
+  cin >> cargo;
+
+  cout << "you will need " << methtruck << "of each required resource to make " << methtruck << " meth" << endl << "This run will make $" << methmoneyfinal << endl;
+  restart();
 }
 
 void moonshine()
