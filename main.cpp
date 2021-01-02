@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal, moonplacer, methmoney, methtruck, methmoneyfinal, methplacer, methtax, methdifference;
+int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal, moonplacer, methmoney, methtruck, methmoneyfinal, methplacer, methtax, methdifference, moontax, moondifference;
 char uselessvar, mode2;
 string mode1, uselessvar1;
 
@@ -58,7 +58,9 @@ void moonshine()
   moonplacer = cargo / 3;
   moontruck = moonplacer / 2;
   moonmoneyfinal = moonmoney * moontruck;
-  cout << "You will need " << moontruck << " of each required resource to make " << moontruck << " moonshine." << endl << "This run will make $" << moonmoneyfinal << endl;
+  moontax = moonmoneyfinal * 8.5 / 10;
+  moondifference = moonmoneyfinal - moontax;
+  cout << "You will need " << moontruck << " of each required resource to make " << moontruck << " moonshine." << endl << "This run will make $" << moontax << " after cartel tax, and $" << moonmoneyfinal << " before tax." << endl << "That is a difference of $" << moondifference << endl;
   restart();
 }
 
