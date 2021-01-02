@@ -5,7 +5,7 @@ using namespace std;
 
 float run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck;
 char uselessvar, mode2;
-string mode1;
+string mode1, uselessvar1;
 
 int main();
 
@@ -18,17 +18,25 @@ void moonshine()
   moontruck = cargo / 3;
   cout << moontruck;
   cout << "Enter Y to restart the program, press any other button to close the program: ";
-  cin >> uselessvar;
-  switch(uselessvar)
+  cin >> uselessvar1;
+  if(uselessvar1.length() != 1)
   {
-    case 'Y':
-      main();
-      break;
-    case 'y':
-      main();
-      break;
-    default:
-      cout << "ok";
+    cout << "ok";
+  }
+  else
+  {
+    uselessvar = uselessvar1[0];
+    switch(uselessvar)
+    {
+      case 'Y':
+       main();
+       break;
+      case 'y':
+       main();
+        break;
+      default:
+        cout << "ok";
+    }
   }
 }
 
@@ -50,17 +58,25 @@ void comparison()
   runtype2finalpay = runtype2final * run2pay;
   cout << "Run 1 will make: $" << runtype1finalpay << endl << "Run 2 will make: $" << runtype2finalpay << endl;
   cout << "Enter Y to restart the program, press any other button to close the program: ";
-  cin >> uselessvar;
-  switch(uselessvar)
+  cin >> uselessvar1;
+  if(uselessvar1.length() != 1)
   {
-    case 'Y':
-      main();
-      break;
-    case 'y':
-      main();
-      break;
-    default:
-      cout << "ok";
+    cout << "ok";
+  }
+  else
+  {
+    uselessvar = uselessvar1[0];
+    switch(uselessvar)
+    {
+      case 'Y':
+       main();
+       break;
+      case 'y':
+       main();
+        break;
+      default:
+        cout << "ok";
+    }
   }
 }
 
@@ -76,17 +92,25 @@ void calc()
   runtype1finalpay = runtype1final * run1pay;
   cout << "This run will make: $" << runtype1finalpay << endl;
   cout << "Enter Y to restart the program, press any other button to close the program: ";
-  cin >> uselessvar;
-  switch(uselessvar)
+  cin >> uselessvar1;
+  if(uselessvar1.length() != 1)
   {
-    case 'Y':
-      main();
-      break;
-    case 'y':
-      main();
-      break;
-    default:
-      cout << "ok";
+    cout << "ok";
+  }
+  else
+  {
+    uselessvar = uselessvar1[0];
+    switch(uselessvar)
+    {
+      case 'Y':
+       main();
+       break;
+      case 'y':
+       main();
+        break;
+      default:
+        cout << "ok";
+    }
   }
 }
 
