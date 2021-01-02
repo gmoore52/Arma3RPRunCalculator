@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal, moonplacer, methmoney, methtruck, methmoneyfinal, methplacer;
+int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal, moonplacer, methmoney, methtruck, methmoneyfinal, methplacer, methtax, methdifference;
 char uselessvar, mode2;
 string mode1, uselessvar1;
 
@@ -40,8 +40,12 @@ void meth()
   cin >> methmoney;
   cout << "Enter amount of space including character and vehicle: ";
   cin >> cargo;
-
-  cout << "you will need " << methtruck << "of each required resource to make " << methtruck << " meth" << endl << "This run will make $" << methmoneyfinal << endl;
+  methplacer = cargo / 3;
+  methtruck = methplacer / 2;
+  methmoneyfinal = methmoney * methtruck;
+  methtax = methmoneyfinal * 8.5 / 10;
+  methdifference = methmoneyfinal - methtax;
+  cout << "you will need " << methtruck << " of each required resource to make " << methtruck << " meth" << endl << "This run will make $" << methtax << " after cartel tax, and $" << methmoneyfinal << " before tax." << endl << "That is a difference of $" << methdifference << endl;
   restart();
 }
 
@@ -96,7 +100,7 @@ int main()
 {
   mode1 = "1";
   mode2 = '1';
-  cout << "Comparison, Calculator or Moonshine? 1 for Comparison, 2 for Calculator, 3 for moonshine: ";
+  cout << "Comparison, Calculator, Moonshine, or Meth? 1 for Comparison, 2 for Calculator, 3 for moonshine, 4 for Meth: ";
   cin >> mode1;
   if(mode1.length() != 1)
   {
@@ -116,6 +120,9 @@ int main()
       break;
     case '3':
       moonshine();
+      break;
+    case '4':
+      meth();
       break;
     default:
       cout << "Please enter a valid answer" << endl;
