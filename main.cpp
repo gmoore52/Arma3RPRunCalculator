@@ -3,12 +3,37 @@
 #include <string>
 using namespace std;
 
-int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal, moonplacer, methmoney, methtruck, methmoneyfinal, methplacer, methtax, methdifference, moontax, moondifference, bonusmoney, runtype1tax, runtype2tax, runtype1diff, runtype2diff;
+int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal, moonplacer, methmoney, methtruck, methmoneyfinal, methplacer, methtax, methdifference, moontax, moondifference, bonusmoney, runtype1tax, runtype2tax, runtype1diff, runtype2diff, diffamount;
 char uselessvar, mode2, legallity, license;
 string mode1, uselessvar1, legallity1, license1;
 bool legal, wpl;
 
 int main();
+
+void restart()
+{
+  cout << "Enter Y to restart the program, enter any other key to close the program: ";
+  cin >> uselessvar1;
+  if(uselessvar1.length() != 1)
+  {
+    cout << "ok";
+  }
+  else
+  {
+    uselessvar = uselessvar1[0];
+    switch(uselessvar)
+    {
+      case 'Y':
+       main();
+       break;
+      case 'y':
+       main();
+        break;
+      default:
+        cout << "ok";
+    }
+  }
+}
 
 void runtax()
 {
@@ -61,68 +86,7 @@ void runtax()
         runtax();
       
     }
-  }
-  
-  if(legallity == '1')
-  {
-    legal = true;
-  }
-  else if(legallity == '2')
-  {
-    legal = false;
-  }
-  else
-  {
-    cout << "Please enter a valid answer" << endl;
-    runtax();
-  }
-  if(legal == true)
-  {
-    cout << "Do you have a workers protection license? 1 for yes, 2 for no: ";
-    cin >> license1;
-    if(license1.length() != 1)
-    {
-    cout << "Please enter a valid answer" << endl;
-    runtax();
-    }
-    else
-    {
-    license = license1[0];
-    }
-    if(license == '1')
-    {
-      wpl = true;
-    }
-    else
-    {
-      wpl = false;
-    }
-  }
-}
-
-void restart()
-{
-  cout << "Enter Y to restart the program, enter any other key to close the program: ";
-  cin >> uselessvar1;
-  if(uselessvar1.length() != 1)
-  {
-    cout << "ok";
-  }
-  else
-  {
-    uselessvar = uselessvar1[0];
-    switch(uselessvar)
-    {
-      case 'Y':
-       main();
-       break;
-      case 'y':
-       main();
-        break;
-      default:
-        cout << "ok";
-    }
-  }
+  } 
 }
 
 void meth()
@@ -163,27 +127,29 @@ void comparison()
   cin >> runtype1weight;
   cout << "Enter Run 1's pay per item: ";
   cin >> run1pay;
+  runtype1final = cargo / runtype1weight;
+  runtype1finalpay = runtype1final * run1pay;
+  runtax();
   if(legal == true)
   {
-    runtype1final = cargo / runtype1weight;
-    runtype1finalpay = runtype1final * run1pay;
     if(wpl == true)
     {
-      runtype1tax = runtype1finalpay * bonusmoney;
+      runtype1tax = runtype1finalpay *  15 / 10;
       runtype1diff = runtype1tax - runtype1finalpay;
-      cout << "This run will make $" << runtype1tax << " with workers protection." << endl;
+      cout << "Run 1 will make $" << runtype1tax << " with workers protection." << endl;
       cout << "That is a bonus amount of $" << runtype1diff << endl;
     }
     else
     {
-      cout << "Run 1 will make: $" << runtype1finalpay << endl;
+      runtype1tax = runtype1finalpay;
+      cout << "Run 1 will make $" << runtype1tax << endl;
     }
   }
   else
   {
     runtype1tax = runtype1finalpay * 8.5 / 10;
     runtype1diff = runtype1finalpay - runtype1tax;
-    cout << "This run will make $" << runtype1tax << " after cartel tax and $" << runtype1finalpay << " before tax" << endl << "That is a difference of $" << runtype1diff << endl;
+    cout << "Run 1 will make $" << runtype1tax << " after cartel tax and $" << runtype1finalpay << " before tax" << endl << "That is a difference of $" << runtype1diff << endl;
   }
   cout << "Enter Run type 2's unrefined weight: ";
   cin >> runtype2weight;
@@ -191,7 +157,42 @@ void comparison()
   cin >> run2pay;
   runtype2final = cargo / runtype2weight;
   runtype2finalpay = runtype2final * run2pay;
-  cout << "Run 2 will make: $" << runtype2finalpay << endl;
+  runtax();
+  if(legal == true)
+  {
+    if(wpl == true)
+    {
+      runtype2tax = runtype2finalpay * 15 / 10;
+      runtype2diff = runtype2tax - runtype2finalpay;
+      cout << "Run 2 will make $" << runtype2tax << " with workers protection." << endl;
+      cout << "That is a bonys amount of $" << runtype2diff << endl;
+    }
+    else
+    {
+      runtype2tax = runtype2finalpay;
+      cout << "Run 2 will make $" << runtype2tax << endl;
+    }
+  }
+  else
+  {
+    runtype2tax = runtype2finalpay * 8.5 / 10;
+    runtype2diff = runtype2finalpay - runtype2tax;
+    cout << "Run 2 will make $" << runtype2tax << " after cartel tax and $" << runtype2finalpay << " before tax" << endl << "That is a difference of $" << runtype2diff << endl;
+  }
+  if(runtype1tax > runtype2tax)
+  {
+    diffamount = runtype1tax - runtype2tax;
+    cout << "Run 1 will make more money, with a $" << diffamount << " difference between the two runs" << endl;
+  }
+  else if(runtype1tax == runtype2tax)
+  {
+    cout << "Both of these runs will make the exact same amount." << endl;
+  }
+  else
+  {
+    diffamount = runtype2tax - runtype1tax;
+    cout << "Run 2 will make more money, with a $" << diffamount << " difference between the two runs" << endl;
+  }
   restart();
 }
 
@@ -205,7 +206,27 @@ void calc()
   cin >> cargo;
   runtype1final = cargo / runtype1weight;
   runtype1finalpay = runtype1final * run1pay;
-  cout << "This run will make: $" << runtype1finalpay << endl;
+  runtax();
+  if(legal == true)
+  {
+    if(wpl == true)
+    {
+      runtype1tax = runtype1finalpay *  15 / 10;
+      runtype1diff = runtype1tax - runtype1finalpay;
+      cout << "Run 1 will make $" << runtype1tax << " with workers protection." << endl;
+      cout << "That is a bonus amount of $" << runtype1diff << endl;
+    }
+    else
+    {
+      cout << "Run 1 will make $" << runtype1finalpay << endl;
+    }
+  }
+  else
+  {
+    runtype1tax = runtype1finalpay * 8.5 / 10;
+    runtype1diff = runtype1finalpay - runtype1tax;
+    cout << "Run 1 will make $" << runtype1tax << " after cartel tax and $" << runtype1finalpay << " before tax" << endl << "That is a difference of $" << runtype1diff << endl;
+  }
   restart();
 }
 
