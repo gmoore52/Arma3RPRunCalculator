@@ -5,9 +5,9 @@ using namespace std;
 
 int run1pay, run2pay, runtype1final, runtype2final, cargo, runtype1weight, runtype2weight, runtype1finalpay, runtype2finalpay, moonmoney, moontruck, moonmoneyfinal, moonplacer, methmoney, methtruck, methmoneyfinal, methplacer, methtax, methdifference, moontax, moondifference, bonusmoney, runtype1tax, runtype2tax, runtype1diff, runtype2diff, diffamount, placeholdervar, selectvar, upgradetier;
 
-char uselessvar, mode2, legallity, license, category, vehicle;
+char restartin, mode, legallity, license, category, vehicle;
 
-string mode1, uselessvar1, legallity1, license1, category1, vehicle1, upgradetier1;
+string mode1, restartin1, legallity1, license1, category1, vehicle1, upgradetier1;
 
 string *selectpoint;
 
@@ -54,15 +54,15 @@ int main();
 void restart()
 {
   cout << "Enter Y to restart the program, enter any other key to close the program: ";
-  cin >> uselessvar1;
-  if(uselessvar1.length() != 1)
+  cin >> restartin1;
+  if(restartin1.length() != 1)
   {
     cout << "ok";
   }
   else
   {
-    uselessvar = uselessvar1[0];
-    switch(uselessvar)
+    restartin = restartin1[0];
+    switch(restartin)
     {
       case 'Y':
        main();
@@ -164,6 +164,9 @@ void selection()
       case 4:
         vehicleselect(airvehiclespace, vehicle, upgradetier);
         break;
+      default:
+        cout << "Please enter a valid answer" << endl;
+        selection();
     }
   }
 }
@@ -362,7 +365,7 @@ void calc()
 int main()
 {
   mode1 = "1";
-  mode2 = '1';
+  mode = '1';
   cout << "Comparison, Calculator, Moonshine, or Meth? 1 for Comparison, 2 for Calculator, 3 for moonshine, 4 for Meth: ";
   cin >> mode1;
   if(mode1.length() != 1)
@@ -372,8 +375,8 @@ int main()
   }
   else
   {
-    mode2 = mode1[0];
-    switch(mode2)
+    mode = mode1[0];
+    switch(mode)
     {
     case '1':
       comparison();
